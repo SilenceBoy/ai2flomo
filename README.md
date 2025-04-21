@@ -74,20 +74,34 @@ SSE_HOST = "0.0.0.0"  # 监听地址
 #### Claude桌面版配置方法
 
 1. 打开Claude桌面应用
-2. 打开设置 -> MCP服务器
-3. 点击"添加服务器"
-4. 填写以下信息：
-   - **名称**：Flomo笔记服务（或任何你喜欢的名称）
-   - **描述**：一个用于发送笔记到Flomo并查询历史发送记录的工具
-   - **类型**：标准输入/输出(stdio)
-   - **命令**：完整路径到`start_flomo.sh`（例如：`/home/username/flomo-mcp/start_flomo.sh`）
-   - **参数**：留空
-5. 点击"保存"
+2. 打开setting -> Developer
+3. 点击选项"Edit Config"
+4. 进入 Claude 目录打开文件"claude_desktop_config.json"
+5. 填写以下信息：
+```json
+{
+  "mcpServers": {
+    "ai2flomo": {
+      "name": "Flomo笔记服务",
+      "type": "stdio",
+      "description": "一个用于添加和管理笔记的工具，支持与Flomo同步",
+      "isActive": true,
+      "command": "/Users/username/workspace/mcp_space/ai2flomo/start_flomo.sh",
+      "args": [],
+      "env": {
+        "PATH": "/opt/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    }
+  }
+}
+```
+6. 替换"start_flomo.sh"文件的路径与环境变量"env"为你的电脑设置。
+7. 点击"保存"
 
 #### Cherry Studio配置方法
 
 1. 打开Cherry Studio应用
-2. 点击右上角的"设置"图标
+2. 点击"设置"图标
 3. 在左侧菜单中选择"MCP服务器"
 4. 点击"添加服务器"按钮
 5. 填写以下信息：
@@ -95,10 +109,9 @@ SSE_HOST = "0.0.0.0"  # 监听地址
    - **描述**：通过AI助手发送笔记到Flomo并管理历史记录
    - **类型**：标准输入/输出(stdio)
    - **命令**：填写`start_flomo.sh`脚本的完整路径
-   - **工作目录**：填写项目所在的目录路径
-   - **自动启动**：建议勾选，这样每次打开Cherry Studio时会自动启动服务
-6. 点击"测试连接"确认服务能正常连接
-7. 点击"保存"完成配置
+   - **环境变量**：可填写你系统的环境变量
+6. 点击"保存"
+7. 点击"保存"按钮左侧的开关，确认服务能正常连接
 
 **Cherry Studio的JSON配置示例**：
 
@@ -128,14 +141,6 @@ SSE_HOST = "0.0.0.0"  # 监听地址
 1. 选择"类型"为"SSE"
 2. 在"URL"字段中填入：`http://localhost:3000/sse`（如果修改了端口号，请相应调整）
 3. 其他步骤与上述相同
-
-#### 使用fastmcp命令行工具安装（可选）
-
-如果你已经安装了fastmcp命令行工具，可以使用以下命令：
-
-```bash
-fastmcp install app.py --name "Flomo笔记服务"
-```
 
 ## 使用指南
 
