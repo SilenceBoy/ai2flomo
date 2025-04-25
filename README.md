@@ -1,6 +1,6 @@
 # Flomo笔记 MCP 服务
 
-这是一个使用FastMCP框架构建的Model Context Protocol (MCP) 服务，可以让AI助手(如Claude, Cherry Studio等)将笔记发送到Flomo并查询历史发送记录。这个服务充当AI助手与Flomo笔记应用之间的桥梁，让你能够通过对话方式快速记录灵感和想法。
+这是一个使用FastMCP框架构建的 MCP 服务，可以让AI助手(如Claude, Cherry Studio等)将你想要的信息发送到Flomo，并查询历史发送记录。这个服务充当AI助手与Flomo笔记应用之间的桥梁，让你能够通过对话方式快速记录灵感和想法。
 
 ## 功能概述
 
